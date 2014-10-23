@@ -1,0 +1,65 @@
+Developers Best Friend Spec
+
+ - Logo
+
+ - Primer
+
+ - Link to User Generator
+
+   -Within route
+   -Form for # of users
+   -Xtra user info?
+   -Working random password?
+   -Include Validation!!?
+
+ - Link to Lorem Ipsum Generator
+   -form for # of paragraphs
+
+Each User should have basic information and associated image
+
+
+Welcome / HomePage ||       Method = GET || URI = /
+List the Users/Results||    Method = GET ||URI = /user/{name?}/?format={format}
+List Lorem Ipsum Text ||    METHOD = GET ||URI = /loremipsum
+View an Individual user||   METHOD = GET ||URI = /user
+Form to Create Custom User||METHOD = GET ||URI = /create/{name}
+Edit a new User||           Method = POST||URI = /create/{name}
+
+##########
+
+Build Homepage
+Add Logo
+Add searchbox
+
+#####
+
+NOTES
+
+File::get (app_path.)  //gets path for file to open/display
+
+function called json_decode will turn json into array.  True as second parameter gives array!
+
+array_pop(pops parameter off array and displays if used with return statemet)
+
+
+COMPOSER UPDATE <-- LOCALLY  (Updates composer.lock)
+COMPOSER INSTALL <--- LIVE SERVER (Looks at .lock file and makes sure all dependencies are taken)
+####
+
+IMAGE TO BYTES
+
+
+CLASS NOT FOUND ERROR
+    Have to specify namespace in package.
+
+    ex: echo Paste\Pre::render($variable);
+
+    or ADD ALIAS IN app.php  remember cmd + p for search
+
+
+
+#### VIEWS ####
+  HTML Output
+  VIEWS! BLADE!
+  Master HTML file.  _master.blade.php with snippets
+  Within routes do.... return View::make('index');
