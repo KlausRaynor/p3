@@ -9,9 +9,11 @@ How many paragraphs do you want? (Max 99):<input type="text" name="li_number" si
 <input type="submit" name="submit">
 
 </form>
+
+<a href='/'> Back to Main Menu </a>
 @stop
 
 @section('results')
 
-	<p></p>
+	
 @stop

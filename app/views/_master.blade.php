@@ -8,9 +8,11 @@
 </head>
 <body>
 <div id="container">
-	<center><img src='http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png' alt='Dev Buddy!'><br><br>
-	@yield('content') </center>
+	<img src='http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png' alt='Dev Buddy!'><br><br>
+	@yield('content') 
 
+	@yield('results')
+	<a href='/'> Back to Main Menu </a>
 	</div>
 </body>
 </html>
