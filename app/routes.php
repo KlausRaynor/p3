@@ -15,39 +15,39 @@
 Route::get('/', function()
 {
 
-/*
-	$generator = new Badcow\LoremIpsum\Generator();
-	$paragraphs = $generator->getParagraphs(5);
-	
-	echo implode('<p>', $paragraphs);
-
-*/
 	return View::make('index');
 });
 
-Route::get('/users/{number?}', function($number) {
+
+#Lorem Ipsem Generator Page
+Route::get('/lorem', function() {
+
+	return View::make('lorem');
+	
+});
+
+#Lorem Ipsem Generator Results Page
+Route::post('/lorem/', function() {
+
+	$lorem_number = Input::get('li_number');
+	echo $lorem_number;
+	$generator = new Badcow\LoremIpsum\Generator();
+    $paragraphs = $generator->getParagraphs($lorem_number);
+
+    $display = implode('<p>', $paragraphs);
+    return View::make('lorem');
+});
+
+#Random User Generator Page
+Route::get('/users', function() {
 
 	return 'List specified # of users';
 });
 
-#Display the form for a new user
-Route::get('/add', function() {
+#Random User Generator Page
+Route::get('/users', function() {
 
-});
-
-#Process the form for a new user
-Route::post('/add', function() {
-
-});
-
-#Display the form to edit a user
-Route::get('/edit/{name}', function() {
-
-});
-
-#Process the form to edit a user
-Route::post('/edit/', function() {
-
+	return 'reports of my death were greatly exaggerated.';
 });
 
 #practice for JSON 

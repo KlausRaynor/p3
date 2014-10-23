@@ -1,23 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
+	<meta charset='utf-8'>
 
-    <title>@yield('title', 'My Web Site')</title>
-
-    <meta charset='utf-8'>
-    <link rel='stylesheet' href='{{ asset('css/foobar.css') }}'>
-
-    @yield('head')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 </head>
 <body>
+<div id="container">
+	<center><img src='http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png' alt='Dev Buddy!'><br><br>
+	@yield('content') </center>
 
-
-    @yield('content')
-
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' type='text/javascript'></script>
-
-    @yield('footer')
-
+	</div>
 </body>
 </html>
