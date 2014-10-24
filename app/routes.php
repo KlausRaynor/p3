@@ -19,29 +19,38 @@ Route::get('/', function()
 });
 
 
-#Lorem Ipsem Generator Page
+#Lorem Ipsem Generator Page ++++
 Route::get('/lorem', function() {
 
 	return View::make('lorem');
 	
 });
 
-#Lorem Ipsem Generator Page Results
+#Lorem Ipsem Generator Page Results +++++
 Route::post('/lorem/', function() {
 
-	//The following logic was taken directly from the README.md from the BadCow Lorem Ipsum. Altered only to fit
-	//within my Route
+	#The following logic was taken directly from the README.md from the BadCow Lorem Ipsum. Altered only to fit
+	#within my Route
 
 	$lorem_number = Input::get('li_number');
-	
-	$generator = new Badcow\LoremIpsum\Generator();
-    $paragraphs = $generator->getParagraphs($lorem_number);
+	if($lorem_number > 99 || $lorem_number < 0 || $lorem_number >! 0) {
 
-    $display = implode('<p>', $paragraphs);
-    echo View::make('lorem');
-    
-    return $display;
-    
+		#echo the view first so the form stays on top of the page
+		echo View::make('lorem');
+		return "<h1>Please enter a number between 0 and 99! <h1>";
+	}
+	else {
+		$generator = new Badcow\LoremIpsum\Generator();
+	    $paragraphs = $generator->getParagraphs($lorem_number);
+
+
+	    $display = implode('<p>', $paragraphs);
+
+	  
+	    echo View::make('lorem');
+	    
+	    return $display;
+    }
 });
 
 #Random User Generator Page
@@ -54,24 +63,45 @@ Route::get('/users', function() {
 Route::post('/users', function() {
 
 	//contains number of users in $users variable
-	$users = Input::get('userCount');
-	if($users >50) {
-		echo 'Please input less than 50!';
+	$users = Input::get('li_number');
+
+	//checks to make sure no input > 50 or an invalid option
+	if($users >50 || $users < 0) {
+		echo View::make('/users');
+		return '<h1>Please input a number between 0 and 50!</h1>';
+		
 	}
+	else{
+
 	//returns our input field and user page to the top, listing all users underneath
 	echo View::make('/users');
 
+	//creates instance of name generator
 	$faker = Faker::create();
+	$userArray = array();
+
 	for($i=0; $i<$users; $i++){
-	echo $faker->name; 
+	
+	array_push($userArray, $faker->name, $faker->address, $faker->catchPhrase);
+
+
 	}
-	return;
-});
 
-#practice for JSON 
-Route::get('/data', function() {
+	$arrayCount = count($userArray);
 
-	return 'Get the contents of the JSON object';
+	$view = '';
+	#forcing only 3 parameters per output (array_push hard coded) so the following for loop works 
+	for($i=0; $i< $userArray; $i+=3) {
+		#outputs view variable for each record
+		$view = '<h6>NAME:</h6>'.$userArray[$i].'<br>';
+		$view .= '<h6>ADDRESS</h6>'.$userArray[$i + 1].'<br>';
+		$view .= '<h6>CATCH PHRASE</h6>'.$userArray[$i + 2].'<br>';
+	}
+	
+	//Prints all names in array
+	return $view;
+
+	}
 });
 
 

@@ -3,7 +3,8 @@
 @section('content')
 
 <form method='POST' action='/users'>
-
-<p>How many Heroes do you want? (Max 50): <input type='text' name='userCount' size='2'><input type='submit'></p>
-
+	<label for'userCount'>Select Number of Heroes (Max 50):</label>
+		<input type="text" name="li_number" size="2">
+		<input type="submit">
+</form>
 @stop
