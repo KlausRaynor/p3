@@ -13,20 +13,19 @@
 
 #Homepage
 Route::get('/', function()
-{
+	{
 
-	return View::make('index');
-});
+		return View::make('index');
+	});
 
+	#Lorem Ipsem Generator Page ++++
+	Route::get('/lorem', function() {
 
-#Lorem Ipsem Generator Page ++++
-Route::get('/lorem', function() {
+		return View::make('lorem');
+		
+	});
 
-	return View::make('lorem');
-	
-});
-
-#Lorem Ipsem Generator Page Results +++++
+#Lorem Ipsem Generator Page Results
 Route::post('/lorem/', function() {
 
 	#The following logic was taken directly from the README.md from the BadCow Lorem Ipsum. Altered only to fit
@@ -56,8 +55,8 @@ Route::post('/lorem/', function() {
 #Random User Generator Page
 Route::get('/users', function() {
 
-	return View::make('/users');
-});
+		return View::make('/users');
+	});
 
 #Random User Generator Page Results
 Route::post('/users', function() {
@@ -66,7 +65,7 @@ Route::post('/users', function() {
 	$users = Input::get('li_number');
 
 	//checks to make sure no input > 50 or an invalid option
-	if($users >50 || $users < 0) {
+	if($users > 50 || $users < 0) {
 		echo View::make('/users');
 		return '<h1>Please input a number between 0 and 50!</h1>';
 		
@@ -82,20 +81,35 @@ Route::post('/users', function() {
 
 	for($i=0; $i<$users; $i++){
 	
+	#puts three different 'faker' variables into an array.	
 	array_push($userArray, $faker->name, $faker->address, $faker->catchPhrase);
-
 
 	}
 
 	$arrayCount = count($userArray);
 
+
 	$view = '';
+	$filenameArray = glob('userFaces'.'/*.*');
+
 	#forcing only 3 parameters per output (array_push hard coded) so the following for loop works 
-	for($i=0; $i< $userArray; $i+=3) {
+	for($i=0; $i< $arrayCount; $i+=3) {
+
+		//grab random image from userFaces
+		
+
+		$randomHero = array_rand($filenameArray);
+		
+		
+
+
+			
+		$view .= '<img src=\''.$filenameArray[$randomHero].'\'>'.'<br>';
 		#outputs view variable for each record
-		$view = '<h6>NAME:</h6>'.$userArray[$i].'<br>';
-		$view .= '<h6>ADDRESS</h6>'.$userArray[$i + 1].'<br>';
-		$view .= '<h6>CATCH PHRASE</h6>'.$userArray[$i + 2].'<br>';
+		$view .= '<strong>NAME: </strong>'.$userArray[$i].'<br>';
+		$view .= '<strong>ADDRESS: </strong>'.$userArray[$i + 1].'<br>';
+		$view .= '<strong>CATCH PHRASE: "</strong>'.$userArray[$i + 2].'"<br><br>';
+		
 	}
 	
 	//Prints all names in array

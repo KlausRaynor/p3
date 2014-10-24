@@ -12,7 +12,7 @@
 <body>
 <div id="container">
 	<div id='image_div'>
-	<img class="banner" src='/userFaces/vault_boy.png' alt='Dev Buddy!'></div>
+	<img class="banner" src='vault_boy.png' alt='Dev Buddy!'></div>
 	@yield('content')  
 
 	<div id="results">@yield('results')</div>
