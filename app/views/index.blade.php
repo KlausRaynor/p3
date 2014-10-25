@@ -22,9 +22,9 @@ and descriptive text used to align yourself with or against an RPG character.  H
 	<br>
 <h2> Random Hero Generator</h2>
 <div id='dotadiv'>
-<p> Do you love Dota 2 as much as I do?  No? Well here's a random hero anyway!  This app creates
+<p> Do you love Dota 2 as much as I do?  No? Well here's a random hero generator anyway!  This app creates
 new names and biographies for well known heroes in the Dota universe using the Faker package.</p>
-	<a href='users'>Random Hero Generator</a>
+	<a href='users'>Random Hero Generator</a><br><br><br>
 For more information on Dota 2, click <a href="https://www.dota2.com">here...</a><br><br>
 	
 </div>

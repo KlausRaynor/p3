@@ -43,7 +43,7 @@ Route::post('/lorem/', function() {
 	    $paragraphs = $generator->getParagraphs($lorem_number);
 
 
-	    $display = implode('<p>', $paragraphs);
+	    $display = '<div id=\'ipsumdiv\'>'.implode('<p>', $paragraphs).'</div>';
 
 	  
 	    echo View::make('lorem');
@@ -85,7 +85,7 @@ Route::post('/users', function() {
 	array_push($userArray, $faker->name, $faker->address, $faker->catchPhrase);
 
 	}
-
+	#counts number of elemenets in user array
 	$arrayCount = count($userArray);
 
 
@@ -96,20 +96,20 @@ Route::post('/users', function() {
 	for($i=0; $i< $arrayCount; $i+=3) {
 
 		//grab random image from userFaces
-		
-
 		$randomHero = array_rand($filenameArray);
-		
-		
 
 
-			
-		$view .= '<img src=\''.$filenameArray[$randomHero].'\'>'.'<br>';
+		$view .= '<div id=\'container\'>';			
+		$view .= '<img class=\'border\' src=\''.$filenameArray[$randomHero].'\'>'.'<br>';
+		
 		#outputs view variable for each record
 		$view .= '<strong>NAME: </strong>'.$userArray[$i].'<br>';
 		$view .= '<strong>ADDRESS: </strong>'.$userArray[$i + 1].'<br>';
-		$view .= '<strong>CATCH PHRASE: "</strong>'.$userArray[$i + 2].'"<br><br>';
-		
+		$view .= '<strong>CATCH PHRASE: "</strong>'.$userArray[$i + 2].'"</div><br><br>';
+
+
+		#removes variable from array so no two hero faces are used twice.
+		unset($filenameArray[$randomHero]);
 	}
 	
 	//Prints all names in array

@@ -11,6 +11,10 @@
 
 }
 
+.border {
+	border-radius: 60px;
+}
+
 #image_div {
 	margin: 2em;
 }
